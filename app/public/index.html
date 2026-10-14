@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Computing & DevOps CI/CD Suite | MIT-WPU CCA-2</title>
+    <meta name="description" content="Comprehensive Cloud Computing and DevOps architecture showcase application featuring CI/CD pipeline, Docker containerization, and Kubernetes orchestration.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Announcement Bar -->
+    <div class="announcement-bar">
+        <div class="announcement-content">
+            <span class="pulse-indicator"></span>
+            <span class="announcement-tag">CI/CD LIVE STATUS</span>
+            <span id="announcement-version" class="announcement-text">Version 1.0 - Hello World</span>
+            <span class="announcement-divider">|</span>
+            <span class="announcement-sub">Kubernetes NodePort: <strong>30080</strong></span>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="main-nav">
+        <div class="nav-container">
+            <a href="#hero" class="nav-brand">
+                <div class="brand-logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <span class="brand-title">CloudOps <span class="gradient-text">CCA-2</span></span>
+                    <span class="brand-subtitle">MIT-WPU Cloud Computing & DevOps</span>
+                </div>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#topics" class="nav-link">Topics</a></li>
+                <li><a href="#architecture" class="nav-link">Architecture</a></li>
+                <li><a href="#pipeline-sim" class="nav-link">Pipeline Simulator</a></li>
+                <li><a href="#telemetry" class="nav-link">Live Telemetry</a></li>
+                <li><a href="#quiz" class="nav-link">Knowledge Check</a></li>
+                <li><a href="#demo-guide" class="nav-link highlight">Phase 6 Demo</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <span class="badge badge-success" id="nav-pod-badge">
+                    <span class="dot-live"></span> Pod: <span id="nav-hostname">fetching...</span>
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section" id="hero">
+        <div class="hero-glow glow-1"></div>
+        <div class="hero-glow glow-2"></div>
+        
+        <div class="hero-container">
+            <div class="hero-badge">
+                <span class="badge-icon">⚡</span>
+                <span>Automated Jenkins & Kubernetes Rolling Deployment Stack</span>
+            </div>
+
+            <h1 class="hero-title">
+                Cloud Computing & <br>
+                <span class="gradient-text-animated">DevOps Engineering</span> Suite
+            </h1>
+
+            <p class="hero-description">
+                A production-grade cloud native application architected for the Continuous Comprehensive Assessment (CCA-2). 
+                Showcasing declarative Jenkins CI/CD pipelines, Docker containerization, Kubernetes rolling updates on Minikube, 
+                and comprehensive foundational concepts.
+            </p>
+
+            <!-- Prominent Version Pill for Rubric Verification -->
+            <div class="version-banner-box">
+                <div class="version-pill-header">
+                    <span class="rubric-badge">Phase 6 Rubric Indicator</span>
+                    <span class="version-status-indicator"><span class="dot-live"></span> Active Build Payload</span>
+                </div>
+                <div class="version-display">
+                    <div class="version-code" id="hero-version-text">Version 1.0 - Hello World</div>
+                    <button class="btn btn-secondary btn-sm" id="btn-copy-version" title="Copy version string">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        <span>Copy</span>
+                    </button>
+                </div>
+                <p class="version-caption">
+                    Evaluators: Notice this string changes automatically to <code>Version 2.0 - CI/CD Updated!</code> upon triggering Phase 6 rolling update.
+                </p>
+            </div>
+
+            <!-- Key Quick Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📦</div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="stat-version">V1.0</span>
+                        <span class="stat-label">Active Release</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">☸️</div>
+                    <div class="stat-info">
+                        <span class="stat-value">2 Replicas</span>
+                        <span class="stat-label">Minikube Pods</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🌐</div>
+                    <div class="stat-info">
+                        <span class="stat-value">Port 30080</span>
+                        <span class="stat-label">NodePort Service</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🚀</div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="stat-uptime">0s</span>
+                        <span class="stat-label">Pod Uptime</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-buttons">
+                <a href="#pipeline-sim" class="btn btn-primary">
+                    <span>Simulate CI/CD Pipeline</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+                <a href="#architecture" class="btn btn-secondary">
+                    <span>View Architecture</span>
+                </a>
+                <a href="#topics" class="btn btn-ghost">
+                    <span>Explore Topics</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+
+        <!-- Architecture & Pipeline Overview -->
+        <section class="section" id="architecture">
+            <div class="section-header">
+                <div class="section-tag">SYSTEM BLUEPRINT</div>
+                <h2 class="section-title">End-to-End DevOps Pipeline Architecture</h2>
+                <p class="section-subtitle">How changes travel from Git commit to Kubernetes zero-downtime rolling update on AWS EC2.</p>
+            </div>
+
+            <div class="arch-diagram-card">
+                <div class="diagram-flow">
+                    <!-- Step 1 -->
+                    <div class="flow-step">
+                        <div class="step-badge">1</div>
+                        <div class="flow-icon">💻</div>
+                        <h4>Developer Git Push</h4>
+                        <p>Code change committed to <code>main</code> branch on GitHub.</p>
+                        <span class="flow-tag">GitHub Repo</span>
+                    </div>
+                    <div class="flow-arrow">➔</div>
+
+                    <!-- Step 2 -->
+                    <div class="flow-step">
+                        <div class="step-badge">2</div>
+                        <div class="flow-icon">⚙️</div>
+                        <h4>Jenkins CI Trigger</h4>
+                        <p>EC2 Jenkins server pulls repo & executes automated unit tests.</p>
+                        <span class="flow-tag">npm test</span>
+                    </div>
+                    <div class="flow-arrow">➔</div>
+
+                    <!-- Step 3 -->
+                    <div class="flow-step">
+                        <div class="step-badge">3</div>
+                        <div class="flow-icon">🐳</div>
+                        <h4>Docker Image Build</h4>
+                        <p>Builds slim container with <code>${BUILD_NUMBER}</code> and <code>latest</code> tags.</p>
+                        <span class="flow-tag">Dockerfile</span>
+                    </div>
+                    <div class="flow-arrow">➔</div>
+
+                    <!-- Step 4 -->
+                    <div class="flow-step">
+                        <div class="step-badge">4</div>
+                        <div class="flow-icon">☁️</div>
+                        <h4>Docker Hub Push</h4>
+                        <p>Secure login with Jenkins credentials & pushes to public registry.</p>
+                        <span class="flow-tag">Docker Hub</span>
+                    </div>
+                    <div class="flow-arrow">➔</div>
+
+                    <!-- Step 5 -->
+                    <div class="flow-step">
+                        <div class="step-badge">5</div>
+                        <div class="flow-icon">☸️</div>
+                        <h4>Minikube Deploy</h4>
+                        <p><code>kubectl set image</code> triggers zero-downtime rolling update.</p>
+                        <span class="flow-tag">2 Pods</span>
+                    </div>
+                    <div class="flow-arrow">➔</div>
+
+                    <!-- Step 6 -->
+                    <div class="flow-step">
+                        <div class="step-badge">6</div>
+                        <div class="flow-icon">🌍</div>
+                        <h4>Evaluator Access</h4>
+                        <p>Service exposes app on NodePort 30080 via EC2 Public IP.</p>
+                        <span class="flow-tag">:30080</span>
+                    </div>
+                </div>
+
+                <div class="arch-matrix-grid">
+                    <div class="matrix-card">
+                        <span class="matrix-label">Infrastructure Host</span>
+                        <h4>AWS EC2 t3.medium</h4>
+                        <p>Ubuntu 22.04 LTS with 2 vCPUs and 4 GB RAM running Docker, Jenkins & Minikube.</p>
+                    </div>
+                    <div class="matrix-card">
+                        <span class="matrix-label">CI/CD Engine</span>
+                        <h4>Jenkins Declarative</h4>
+                        <p>Automated pipeline in <code>Jenkinsfile</code> with 6 structured stages & error trapping.</p>
+                    </div>
+                    <div class="matrix-card">
+                        <span class="matrix-label">Orchestration</span>
+                        <h4>Minikube Kubernetes</h4>
+                        <p>Deployment with 2 Replicas, rolling update strategy, and NodePort Service on 30080.</p>
+                    </div>
+                    <div class="matrix-card">
+                        <span class="matrix-label">Zero Downtime</span>
+                        <h4>Rolling Update</h4>
+                        <p><code>maxSurge: 1</code> & <code>maxUnavailable: 0</code> ensures seamless user transitions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive CI/CD Pipeline Simulator -->
+        <section class="section" id="pipeline-sim">
+            <div class="section-header">
+                <div class="section-tag">SIMULATION SUITE</div>
+                <h2 class="section-title">Interactive Jenkins Pipeline Simulator</h2>
+                <p class="section-subtitle">Experience the exact stages defined in the project's declarative <code>Jenkinsfile</code> in real-time.</p>
+            </div>
+
+            <div class="pipeline-card">
+                <div class="pipeline-header">
+                    <div class="pipeline-title-group">
+                        <span class="pipeline-icon">⚙️</span>
+                        <div>
+                            <h3>Pipeline: cca2-cicd-job (Declarative)</h3>
+                            <span class="pipeline-sub">Source: GitHub &bull; Target: Minikube &bull; Branch: main</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" id="btn-trigger-pipeline">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        <span id="btn-trigger-text">Run Pipeline Build</span>
+                    </button>
+                </div>
+
+                <!-- Pipeline Stages Visualizer -->
+                <div class="stages-track">
+                    <div class="stage-item" id="stage-1" data-stage="1">
+                        <div class="stage-circle"><span class="stage-num">1</span></div>
+                        <div class="stage-meta">
+                            <span class="stage-name">Checkout SCM</span>
+                            <span class="stage-status" id="status-1">Idle</span>
+                        </div>
+                    </div>
+                    <div class="stage-connector"></div>
+
+                    <div class="stage-item" id="stage-2" data-stage="2">
+                        <div class="stage-circle"><span class="stage-num">2</span></div>
+                        <div class="stage-meta">
+                            <span class="stage-name">Build & Test</span>
+                            <span class="stage-status" id="status-2">Idle</span>
+                        </div>
+                    </div>
+                    <div class="stage-connector"></div>
+
+                    <div class="stage-item" id="stage-3" data-stage="3">
+                        <div class="stage-circle"><span class="stage-num">3</span></div>
+                        <div class="stage-meta">
+                            <span class="stage-name">Docker Build</span>
+                            <span class="stage-status" id="status-3">Idle</span>
+                        </div>
+                    </div>
+                    <div class="stage-connector"></div>
+
+                    <div class="stage-item" id="stage-4" data-stage="4">
+                        <div class="stage-circle"><span class="stage-num">4</span></div>
+                        <div class="stage-meta">
+                            <span class="stage-name">Push Image</span>
+                            <span class="stage-status" id="status-4">Idle</span>
+                        </div>
+                    </div>
+                    <div class="stage-connector"></div>
+
+                    <div class="stage-item" id="stage-5" data-stage="5">
+                        <div class="stage-circle"><span class="stage-num">5</span></div>
+                        <div class="stage-meta">
+                            <span class="stage-name">Minikube Deploy</span>
+                            <span class="stage-status" id="status-5">Idle</span>
+                        </div>
+                    </div>
+                    <div class="stage-connector"></div>
+
+                    <div class="stage-item" id="stage-6" data-stage="6">
+                        <div class="stage-circle"><span class="stage-num">6</span></div>
+                        <div class="stage-meta">
+                            <span class="stage-name">Verify Rollout</span>
+                            <span class="stage-status" id="status-6">Idle</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulated Console Output Terminal -->
+                <div class="terminal-container">
+                    <div class="terminal-bar">
+                        <div class="terminal-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <span class="terminal-title">Jenkins Console Output (Simulated Stream)</span>
+                        <button class="terminal-clear-btn" id="btn-clear-logs">Clear</button>
+                    </div>
+                    <pre class="terminal-body" id="pipeline-log"><span class="log-dim">[Pipeline] Ready to execute build. Click 'Run Pipeline Build' to trigger the automated CI/CD workflow.</span></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comprehensive Cloud & DevOps Topics -->
+        <section class="section" id="topics">
+            <div class="section-header">
+                <div class="section-tag">CURRICULUM DEEP DIVE</div>
+                <h2 class="section-title">Core Topics: Cloud Computing & DevOps</h2>
+                <p class="section-subtitle">Exhaustive theoretical and practical foundations mapped directly to the academic syllabus.</p>
+            </div>
+
+            <!-- Topic Navigation Tabs -->
+            <div class="tabs-nav" id="topics-tabs">
+                <button class="tab-btn active" data-tab="cloud-models">1. Cloud Models & Arch</button>
+                <button class="tab-btn" data-tab="devops-cycle">2. DevOps Lifecycle</button>
+                <button class="tab-btn" data-tab="cicd-jenkins">3. CI/CD & Jenkins</button>
+                <button class="tab-btn" data-tab="docker-containers">4. Docker Containers</button>
+                <button class="tab-btn" data-tab="k8s-orchestration">5. Kubernetes & Minikube</button>
+                <button class="tab-btn" data-tab="observability">6. Observability & Probes</button>
+            </div>
+
+            <div class="tab-content-container">
+                <!-- Tab 1: Cloud Models -->
+                <div class="tab-pane active" id="tab-cloud-models">
+                    <div class="topic-grid">
+                        <div class="topic-card">
+                            <div class="card-icon-header">
+                                <span class="card-icon">☁️</span>
+                                <h3>Cloud Computing Service Models</h3>
+                            </div>
+                            <p>According to NIST SP 800-145, Cloud Computing enables convenient, on-demand network access to a shared pool of configurable computing resources.</p>
+                            
+                            <div class="nested-cards">
+                                <div class="nested-card">
+                                    <span class="badge badge-info">IaaS</span>
+                                    <h4>Infrastructure as a Service</h4>
+                                    <p>Provides raw compute, networking, and storage. The user manages OS, runtime, middleware, data, and applications.</p>
+                                    <span class="example-tag">AWS EC2, Google Compute Engine, Azure VMs</span>
+                                </div>
+                                <div class="nested-card">
+                                    <span class="badge badge-purple">PaaS</span>
+                                    <h4>Platform as a Service</h4>
+                                    <p>Provides execution environments, middleware, and database engines. Developer only writes and deploys code.</p>
+                                    <span class="example-tag">AWS Elastic Beanstalk, Heroku, Google App Engine</span>
+                                </div>
+                                <div class="nested-card">
+                                    <span class="badge badge-cyan">SaaS</span>
+                                    <h4>Software as a Service</h4>
+                                    <p>End-user web application fully managed and operated by the cloud vendor over HTTPS.</p>
+                                    <span class="example-tag">Google Workspace, Microsoft 365, Slack, Salesforce</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="topic-card">
+                            <div class="card-icon-header">
+                                <span class="card-icon">🏢</span>
+                                <h3>Deployment Models & NIST Characteristics</h3>
+                            </div>
+                            <ul class="styled-list">
+                                <li>
+                                    <strong>Public Cloud:</strong> Multi-tenant infrastructure provisioned for open use by the general public (AWS, GCP, Azure).
+                                </li>
+                                <li>
+                                    <strong>Private Cloud:</strong> Dedicated infrastructure provisioned for exclusive use by a single organization.
+                                </li>
+                                <li>
+                                    <strong>Hybrid Cloud:</strong> Composition of two or more distinct cloud infrastructures bound together by standardized technology.
+                                </li>
+                            </ul>
+
+                            <h4 class="mt-4">5 Essential Cloud Characteristics:</h4>
+                            <div class="pill-group">
+                                <span class="feature-pill">1. On-Demand Self-Service</span>
+                                <span class="feature-pill">2. Broad Network Access</span>
+                                <span class="feature-pill">3. Resource Pooling</span>
+                                <span class="feature-pill">4. Rapid Elasticity</span>
+                                <span class="feature-pill">5. Measured Service</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: DevOps Lifecycle -->
+                <div class="tab-pane" id="tab-devops-cycle">
+                    <div class="topic-grid">
+                        <div class="topic-card">
+                            <div class="card-icon-header">
+                                <span class="card-icon">♾️</span>
+                                <h3>The DevOps Infinity Loop</h3>
+                            </div>
+                            <p>DevOps is a set of cultural philosophies, practices, and tools that increases an organization’s ability to deliver applications at high velocity.</p>
+
+                            <div class="loop-grid">
+                                <div class="loop-phase">
+                                    <span class="phase-number">1</span>
+                                    <span class="phase-title">Plan</span>
+                                    <span class="phase-desc">Agile backlog, sprint planning, Jira/GitHub Issues.</span>
+                                </div>
+                                <div class="loop-phase">
+                                    <span class="phase-number">2</span>
+                                    <span class="phase-title">Code</span>
+                                    <span class="phase-desc">Git version control, feature branches, pull requests.</span>
+                                </div>
+                                <div class="loop-phase">
+                                    <span class="phase-number">3</span>
+                                    <span class="phase-title">Build</span>
+                                    <span class="phase-desc">Compiling, artifact generation, Docker packaging.</span>
+                                </div>
+                                <div class="loop-phase">
+                                    <span class="phase-number">4</span>
+                                    <span class="phase-title">Test</span>
+                                    <span class="phase-desc">Unit tests, integration tests, linting, SAST security.</span>
+                                </div>
+                                <div class="loop-phase">
+                                    <span class="phase-number">5</span>
+                                    <span class="phase-title">Release</span>
+                                    <span class="phase-desc">Artifact tagging, semantic versioning, container registry.</span>
+                                </div>
+                                <div class="loop-phase">
+                                    <span class="phase-number">6</span>
+                                    <span class="phase-title">Deploy</span>
+                                    <span class="phase-desc">Kubernetes rollout, canary / blue-green deployment.</span>
+                                </div>
+                                <div class="loop-phase">
+                                    <span class="phase-number">7</span>
+                                    <span class="phase-title">Operate</span>
+                                    <span class="phase-desc">Infrastructure management, auto-scaling, load balancing.</span>
+                                </div>
+                                <div class="loop-phase">
+                                    <span class="phase-number">8</span>
+                                    <span class="phase-title">Monitor</span>
+                                    <span class="phase-desc">Log aggregation, metrics (Prometheus/Grafana), alerts.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="topic-card">
+                            <div class="card-icon-header">
+                                <span class="card-icon">📊</span>
+                                <h3>DORA Metrics & CALMS Framework</h3>
+                            </div>
+                            <p>The 4 DORA (DevOps Research and Assessment) metrics quantify software delivery performance:</p>
+                            
+                            <div class="dora-grid">
+                                <div class="dora-item">
+                                    <span class="dora-name">Deployment Frequency</span>
+                                    <span class="dora-val">Multiple per day</span>
+                                </div>
+                                <div class="dora-item">
+                                    <span class="dora-name">Lead Time for Changes</span>
+                                    <span class="dora-val">&lt; 1 hour</span>
+                                </div>
+                                <div class="dora-item">
+                                    <span class="dora-name">Change Failure Rate</span>
+                                    <span class="dora-val">0 - 15%</span>
+                                </div>
+                                <div class="dora-item">
+                                    <span class="dora-name">Time to Restore Service</span>
+                                    <span class="dora-val">&lt; 1 hour (MTTR)</span>
+                                </div>
+                            </div>
+
+                            <h4 class="mt-4">CALMS Core Pillars:</h4>
+                            <p class="text-muted"><strong>C</strong>ulture &bull; <strong>A</strong>utomation &bull; <strong>L</strong>ean &bull; <strong>M</strong>easurement &bull; <strong>S</strong>haring</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: CI/CD & Jenkins -->
+                <div class="tab-pane" id="tab-cicd-jenkins">
+                    <div class="topic-grid">
+                        <div class="topic-card">
+                            <div class="card-icon-header">
+                                <span class="card-icon">🔄</span>
+                                <h3>Continuous Integration vs Delivery vs Deployment</h3>
+                            </div>
+                            <div class="comparison-table-wrapper">
+                                <table class="custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Capability</th>
+                                            <th>Continuous Integration</th>
+                                            <th>Continuous Delivery</th>
+                                            <th>Continuous Deployment</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Automated Build & Test</strong></td>
+                                            <td><span class="badge badge-success">Yes</span></td>
+                                            <td><span class="badge badge-success">Yes</span></td>
+                                            <td><span class="badge badge-success">Yes</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Artifact Staging & Release</strong></td>
+                                            <td><span class="badge badge-dim">No</span></td>
+                                            <td><span class="badge badge-success">Yes</span></td>
+                                            <td><span class="badge badge-success">Yes</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Deploy to Production</strong></td>
+                                            <td><span class="badge badge-dim">Manual</span></td>
+                                            <td><span class="badge badge-warning">Manual Approval</span></td>
+                                            <td><span class="badge badge-success">Fully Automated</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="topic-card">
+                            <div class="card-icon-header">
+                                <span class="card-icon">👨‍🔧</span>
+                                <h3>Jenkins Declarative Pipeline Highlights</h3>
+                            </div>
+                            <p>Our project implements a declarative <code>Jenkinsfile</code> with robust credential masking and stage execution:</p>
+                            
+                            <div class="code-preview">
+                                <div class="code-header">
+                                    <span>Jenkinsfile snippet</span>
+                                    <span class="code-lang">Groovy</span>
+                                </div>
+                                <pre><code>pipeline {
+    agent any
+    environment {
+        DOCKER_IMAGE = 'eclipse1911/cca2-app'
+    }
+    stages {
+        stage('Build & Test') {
+            steps { sh 'npm test' }
+        }
+        stage('Docker Build') {
+            steps { sh "docker build -t ${DOCKER_IMAGE}:${BUILD_NUMBER} ." }
+        }
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 4: Docker Containers -->
+                <div class="tab-pane" id="tab-docker-containers">
+                    <div class="topic-grid">
+                        <div class="topic-card">
+                            <div class="card-icon-header">
+                                <span class="card-icon">🐳</span>
+                                <h3>Virtual Machines vs Docker Containers</h3>
+                            </div>
+                            <p>Unlike Virtual Machines which package an entire Guest Operating System on top of a Hypervisor, Docker containers share the host Linux kernel while isolating processes via namespaces and control groups.</p>
+                            
+                            <div class="feature-bullets">
+                                <div class="bullet-item">
+                                    <strong>Linux Namespaces:</strong> Provide isolation for Process IDs (PID), Network stacks (NET), Mount points (MNT), Inter-process communication (IPC), and Hostnames (UTS).
+                                </div>
+                                <div class="bullet-item">
+                                    <strong>Control Groups (cgroups):</strong> Enforce hard and soft limits on resource usage such as CPU, RAM, and Disk I/O.
+                                </div>
+                                <div class="bullet-item">
+                                    <strong>Union File System (OverlayFS):</strong> Allows layered, read-only base images with a thin copy-on-write (CoW) container layer.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="topic-card">
+                            <div class="card-icon-header">
+                                <span class="card-icon">📑</span>
+                                <h3>Production Dockerfile Best Practices</h3>
+                            </div>
+                            <ul class="styled-list">
+                                <li><strong>Minimal Base Image:</strong> Using <code>node:20-alpine</code> reduces image size from ~1GB to ~160MB, shrinking attack surface.</li>
+                                <li><strong>Layer Caching:</strong> Copying <code>package*.json</code> before source files prevents unnecessary <code>npm install</code> on every code edit.</li>
+                                <li><strong>Least Privilege:</strong> Dropping root privilege by invoking <code>USER node</code>.</li>
+                                <li><strong>Built-in HEALTHCHECK:</strong> Direct container polling using <code>wget /api/health</code>.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 5: Kubernetes & Minikube -->
+                <div class="tab-pane" id="tab-k8s-orchestration">
+                    <div class="topic-grid">
+                        <div class="topic-card">
+                            <div class="card-icon-header">
+                                <span class="card-icon">☸️</span>
+                                <h3>Kubernetes Architecture & Primitives</h3>
+                            </div>
+                            <p>Kubernetes (K8s) is an open-source container orchestration platform designed to automate deploying, scaling, and operating application containers.</p>
+                            
+                            <div class="k8s-primitives">
+                                <div class="primitive-box">
+                                    <strong>Control Plane:</strong>
+                                    <code>kube-apiserver</code>, <code>etcd</code> (distributed key-value store), <code>kube-scheduler</code>, and <code>kube-controller-manager</code>.
+                                </div>
+                                <div class="primitive-box">
+                                    <strong>Worker Nodes:</strong>
+                                    <code>kubelet</code> (node agent), <code>kube-proxy</code> (networking rules), and Container Runtime (containerd/Docker).
+                                </div>
+                                <div class="primitive-box">
+                                    <strong>Deployment (2 Replicas):</strong>
+                                    Maintains desired state, manages ReplicaSets, and executes zero-downtime rolling upgrades.
+                                </div>
+                                <div class="primitive-box">
+                                    <strong>NodePort Service (30080):</strong>
+                                    Routes external traffic from the EC2 node's port <code>30080</code> directly into the active application Pods.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="topic-card">
+                            <div class="card-icon-header">
+                                <span class="card-icon">🔄</span>
+                                <h3>Rolling Updates & Zero-Downtime</h3>
+                            </div>
+                            <p>In <code>k8s/deployment.yaml</code>, our rolling update configuration guarantees uninterrupted service availability:</p>
+
+                            <div class="code-preview">
+                                <div class="code-header">
+                                    <span>k8s/deployment.yaml</span>
+                                    <span class="code-lang">YAML</span>
+                                </div>
+                                <pre><code>strategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxSurge: 1        # Spawns 1 new Pod before killing old
+    maxUnavailable: 0  # Guarantees 100% capacity during rollout</code></pre>
+                            </div>
+                            <p class="text-sm text-muted mt-2">When Jenkins issues <code>kubectl set image</code>, K8s launches new Pods, validates Readiness probes, and terminates older Pods cleanly.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 6: Observability -->
+                <div class="tab-pane" id="tab-observability">
+                    <div class="topic-grid">
+                        <div class="topic-card">
+                            <div class="card-icon-header">
+                                <span class="card-icon">🩺</span>
+                                <h3>Liveness vs Readiness Probes</h3>
+                            </div>
+                            <p>Kubernetes uses health probes to monitor and auto-heal containers:</p>
+                            
+                            <div class="probe-comparison">
+                                <div class="probe-item">
+                                    <span class="badge badge-success">Liveness Probe</span>
+                                    <h4>Is the container alive?</h4>
+                                    <p>Checks <code>/api/health</code>. If the application deadlocks or crashes, the kubelet kills the container and initiates an automatic container restart.</p>
+                                </div>
+                                <div class="probe-item">
+                                    <span class="badge badge-info">Readiness Probe</span>
+                                    <h4>Is the container ready for traffic?</h4>
+                                    <p>Determines if a Pod should receive external HTTP traffic from the Service. During rolling updates, traffic only routes after readiness returns 200 OK.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="topic-card">
+                            <div class="card-icon-header">
+                                <span class="card-icon">📈</span>
+                                <h3>Observability Pillars</h3>
+                            </div>
+                            <ul class="styled-list">
+                                <li><strong>Metrics:</strong> Numeric telemetry over time (CPU utilization, Memory RSS, Request latency).</li>
+                                <li><strong>Logs:</strong> Discrete event records (stdout/stderr captured by container runtime and indexed via ELK / Fluentd).</li>
+                                <li><strong>Traces:</strong> End-to-end request lifecycle through distributed microservices (OpenTelemetry, Jaeger).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Diagnostics & Telemetry Center -->
+        <section class="section" id="telemetry">
+            <div class="section-header">
+                <div class="section-tag">LIVE DIAGNOSTICS</div>
+                <h2 class="section-title">Real-Time Kubernetes Pod Diagnostics</h2>
+                <p class="section-subtitle">Live telemetry retrieved directly from the active container runtime via <code>/api/info</code> and <code>/api/health</code>.</p>
+            </div>
+
+            <div class="telemetry-dashboard">
+                <div class="telemetry-controls">
+                    <button class="btn btn-secondary btn-sm" id="btn-refresh-telemetry">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                        <span>Refresh Telemetry</span>
+                    </button>
+                    <span class="telemetry-timer" id="telemetry-auto-timer">Auto-refresh in 5s</span>
+                </div>
+
+                <div class="telemetry-grid">
+                    <div class="tele-card">
+                        <div class="tele-label">Pod Hostname</div>
+                        <div class="tele-val text-accent" id="tele-hostname">fetching...</div>
+                        <div class="tele-sub">Pod identifier in K8s ReplicaSet</div>
+                    </div>
+                    <div class="tele-card">
+                        <div class="tele-label">Active App Version</div>
+                        <div class="tele-val text-success" id="tele-version">fetching...</div>
+                        <div class="tele-sub">Matched against Phase 6 test</div>
+                    </div>
+                    <div class="tele-card">
+                        <div class="tele-label">Container Uptime</div>
+                        <div class="tele-val" id="tele-uptime">0s</div>
+                        <div class="tele-sub">Continuous execution duration</div>
+                    </div>
+                    <div class="tele-card">
+                        <div class="tele-label">Memory Usage (RSS)</div>
+                        <div class="tele-val text-warning" id="tele-memory">0 MB</div>
+                        <div class="tele-sub">Within K8s 256Mi limit</div>
+                    </div>
+                    <div class="tele-card">
+                        <div class="tele-label">Node Runtime</div>
+                        <div class="tele-val" id="tele-node">Node.js</div>
+                        <div class="tele-sub">Engine environment</div>
+                    </div>
+                    <div class="tele-card">
+                        <div class="tele-label">Target Port</div>
+                        <div class="tele-val text-cyan">NodePort 30080</div>
+                        <div class="tele-sub">Fixed external evaluator port</div>
+                    </div>
+                </div>
+
+                <div class="raw-response-card">
+                    <div class="raw-header">
+                        <span>Raw JSON Response: <code>GET /api/info</code></span>
+                        <button class="btn btn-ghost btn-sm" id="btn-copy-json">Copy JSON</button>
+                    </div>
+                    <pre class="raw-json" id="telemetry-json">Loading...</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Cloud & DevOps Knowledge Quiz -->
+        <section class="section" id="quiz">
+            <div class="section-header">
+                <div class="section-tag">EVALUATION CHECKPOINT</div>
+                <h2 class="section-title">Cloud & DevOps Knowledge Check</h2>
+                <p class="section-subtitle">Interactive conceptual quiz designed for evaluators to test core syllabus mastery.</p>
+            </div>
+
+            <div class="quiz-card" id="quiz-container">
+                <div class="quiz-progress-bar">
+                    <div class="quiz-progress-fill" id="quiz-progress"></div>
+                </div>
+                <div class="quiz-content">
+                    <div class="quiz-meta">
+                        <span class="quiz-q-num" id="quiz-counter">Question 1 of 5</span>
+                        <span class="quiz-score" id="quiz-score-display">Score: 0 / 5</span>
+                    </div>
+                    <h3 class="quiz-question" id="quiz-question-text">Question text goes here?</h3>
+                    <div class="quiz-options" id="quiz-options-container">
+                        <!-- Options injected dynamically by JS -->
+                    </div>
+                    <div class="quiz-feedback" id="quiz-feedback" style="display: none;">
+                        <div class="feedback-badge" id="feedback-badge">Correct</div>
+                        <p class="feedback-explanation" id="feedback-text"></p>
+                        <button class="btn btn-primary btn-sm" id="btn-next-question">Next Question</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phase 6 Code Change Demonstration Guide -->
+        <section class="section" id="demo-guide">
+            <div class="section-header">
+                <div class="section-tag">RUBRIC WALKTHROUGH</div>
+                <h2 class="section-title">Phase 6: Code Change Live Demo</h2>
+                <p class="section-subtitle">Follow these exact instructions during the lab evaluation to demonstrate the automated CI/CD loop.</p>
+            </div>
+
+            <div class="demo-card">
+                <div class="demo-comparison-grid">
+                    <div class="demo-state-box">
+                        <div class="state-header initial">
+                            <span class="state-tag">Build #1 (Initial State)</span>
+                            <h4>Current Baseline</h4>
+                        </div>
+                        <div class="state-body">
+                            <p>The application is live on Minikube displaying:</p>
+                            <div class="mock-badge initial">Version 1.0 - Hello World</div>
+                            <ul class="check-list">
+                                <li>Passed Initial Unit Tests</li>
+                                <li>Docker Image: <code>.../cca2-app:1</code> & <code>latest</code></li>
+                                <li>Kubernetes Pods running Version 1.0</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="demo-arrow">
+                        <div class="arrow-icon">➔</div>
+                        <span class="arrow-label">Git Push & Jenkins Build</span>
+                    </div>
+
+                    <div class="demo-state-box">
+                        <div class="state-header updated">
+                            <span class="state-tag">Build #2 (Updated State)</span>
+                            <h4>Target Evaluation State</h4>
+                        </div>
+                        <div class="state-body">
+                            <p>Edit <code>app/version.js</code> and change string to:</p>
+                            <div class="mock-badge updated">Version 2.0 - CI/CD Updated!</div>
+                            <ul class="check-list">
+                                <li>Commit & Push to GitHub</li>
+                                <li>Jenkins auto-triggers Build #2</li>
+                                <li>Rolling update updates Pods seamlessly</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="demo-code-instruction">
+                    <h4>Quick Command Reference for Phase 6:</h4>
+                    <div class="code-preview">
+                        <div class="code-header">
+                            <span>Terminal / Git Bash</span>
+                            <span class="code-lang">Bash</span>
+                        </div>
+                        <pre><code># 1. Edit app/version.js: change APP_VERSION to 'Version 2.0 - CI/CD Updated!'
+# 2. Commit and push:
+git add app/version.js
+git commit -m "feat: upgrade to Version 2.0 for CI/CD demonstration"
+git push origin main
+
+# 3. Watch Jenkins build #2 complete, then refresh browser at http://&lt;EC2-IP&gt;:30080</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="brand-logo-icon small">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <div class="footer-title">MIT World Peace University (MIT-WPU)</div>
+                    <div class="footer-sub">Continuous Comprehensive Assessment 2 (CCA-2) &bull; Cloud Computing & DevOps</div>
+                </div>
+            </div>
+
+            <div class="footer-meta">
+                <span>Student: <strong>Aryan</strong></span>
+                <span>&bull;</span>
+                <span>Deployment: <strong>Minikube K8s on AWS EC2</strong></span>
+                <span>&bull;</span>
+                <span id="footer-time"></span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Container -->
+    <div id="toast" class="toast"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
