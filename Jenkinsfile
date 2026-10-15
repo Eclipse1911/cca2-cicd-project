@@ -12,6 +12,12 @@ pipeline {
         // Kubernetes Resource Identifiers
         K8S_DEPLOYMENT = 'cca2-app-deployment'
         K8S_CONTAINER = 'cca2-app-container'
+
+        // Kubeconfig path: point Jenkins to ubuntu user's minikube-generated kubeconfig
+        KUBECONFIG = '/home/ubuntu/.kube/config'
+
+        // Minikube home so TLS certs in /home/ubuntu/.minikube are reachable
+        MINIKUBE_HOME = '/home/ubuntu'
     }
 
     stages {
