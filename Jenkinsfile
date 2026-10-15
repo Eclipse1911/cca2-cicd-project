@@ -87,7 +87,7 @@ pipeline {
                 echo "=========================================================="
                 sh """
                     # Wait for zero-downtime rolling update to complete
-                    kubectl rollout status deployment/${K8S_DEPLOYMENT} --timeout=90s
+                    kubectl rollout status deployment/${K8S_DEPLOYMENT} --timeout=300s
 
                     # Display running pods and service details
                     echo "\n--- Kubernetes Pod Status ---"
