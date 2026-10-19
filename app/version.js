@@ -8,7 +8,7 @@
  * 3. Commit and push to trigger automated Jenkins pipeline.
  */
 
-const APP_VERSION = 'Version 1.0 - Hello World';
+const APP_VERSION = 'Version 2.0 - CI/CD Updated!';
 // const APP_VERSION = 'Version 2.0 - CI/CD Updated!'; // Uncomment for Phase 6 Demo!
 
 const BUILD_METADATA = {
