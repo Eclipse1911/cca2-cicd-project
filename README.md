@@ -6,7 +6,7 @@
 > **Course Coordinator:** Priya Nagargoje  
 > **Student Name:** Aryan  
 > **GitHub Repository:** [https://github.com/Eclipse1911/cca2-cicd-project](https://github.com/Eclipse1911/cca2-cicd-project)  
-> **Live EC2 Deployment IP:** `15.207.98.121` (NodePort: `30080`, Jenkins: `8080`)  
+> **Live EC2 Deployment IP:** `13.235.86.28` (NodePort: `30080`, Jenkins: `8080`)  
 
 ---
 
@@ -30,7 +30,7 @@ flowchart LR
     C --> Jenkins_Pipeline
     C4 -->|"docker push"| D["Docker Hub Registry<br/>(docker.io/eclipse1911/cca2-app)"]
     C5 -->|"kubectl apply & rollout"| E["Minikube K8s Cluster<br/>(2 Replicas / Rolling Update)"]
-    E -->|"NodePort 30080"| F["Evaluator Browser<br/>(http://15.207.98.121:30080)"]
+    E -->|"NodePort 30080"| F["Evaluator Browser<br/>(http://13.235.86.28:30080)"]
 ```
 
 ---
@@ -66,12 +66,12 @@ flowchart LR
 | Criterion | Max Marks | Implementation in this Repository | Full Marks Criteria |
 |---|---|---|---|
 | **1. Project Selection & GitHub Readiness** | **1.0** | Clean, well-structured repository with `app/`, `tests/`, `k8s/`, `Dockerfile`, `Jenkinsfile`, and `README.md`. | Builds cleanly without manual fixes; pushed to [GitHub](https://github.com/Eclipse1911/cca2-cicd-project). |
-| **2. AWS & Jenkins Configuration** | **1.5** | Ubuntu EC2 instance (`15.207.98.121`) with Jenkins running on port `8080`, Docker, Minikube, and open security groups (`22`, `8080`, `30080`). | Jenkins running, accessible, connected to GitHub repository. |
+| **2. AWS & Jenkins Configuration** | **1.5** | Ubuntu EC2 instance (`13.235.86.28`) with Jenkins running on port `8080`, Docker, Minikube, and open security groups (`22`, `8080`, `30080`). | Jenkins running, accessible, connected to GitHub repository. |
 | **3. Dockerfile & Image Build** | **1.5** | Multi-layer production `Dockerfile` based on `node:20-alpine`, non-root `USER node`, layer caching, and built-in `HEALTHCHECK`. | Clean build producing a lean container (~49.9 MB). |
 | **4. Jenkinsfile & Automated Pipeline** | **2.0** | Declarative pipeline implementing all 6 required stages (`Checkout`, `Build & Test`, `Docker Build`, `Push Image`, `Minikube Deploy`, `Verify Deployment`). | Runs automatically end-to-end without manual intervention. |
 | **5. Container Registry Integration** | **1.0** | Integrated with Docker Hub (`eclipse1911/cca2-app`) using authenticated credentials, pushing `${BUILD_NUMBER}` and `latest` tags. | Secure authentication and automated image push. |
 | **6. Kubernetes on Minikube** | **1.5** | `k8s/deployment.yaml` (2 replicas, rolling updates, health probes) & `k8s/service.yaml` (NodePort `30080`). | Pods running in cluster, pulling image from Docker Hub. |
-| **7. Verification, Demo & Viva** | **1.5** | Live application reachable at `http://15.207.98.121:30080`, demonstrating code change rollout from **Version 1.0** to **Version 2.0**. | Live demonstration of running app and code change flowing through pipeline. |
+| **7. Verification, Demo & Viva** | **1.5** | Live application reachable at `http://13.235.86.28:30080`, demonstrating code change rollout from **Version 1.0** to **Version 2.0**. | Live demonstration of running app and code change flowing through pipeline. |
 | **TOTAL** | **10.0** | | **All 10 Marks Satisfied** |
 
 ---
@@ -239,7 +239,7 @@ flowchart LR
 ### Phase 6: Code Change Demo (Rubric Requirement)
 
 #### Step 1: Run Initial Build #1
-- Application is live at `http://15.207.98.121:30080`.
+- Application is live at `http://13.235.86.28:30080`.
 - Displays: **`Version 1.0 - Hello World`**.
 
 #### Step 2: Edit Source Code
@@ -258,7 +258,7 @@ git push origin main
 #### Step 4: Run Build #2
 - Jenkins triggers Build #2.
 - Executes automated tests, builds container `cca2-app:BUILD_#`, pushes to Docker Hub, and applies rolling update to Minikube.
-- Refresh `http://15.207.98.121:30080`:
+- Refresh `http://13.235.86.28:30080`:
   Displays live: **`Version 2.0 - CI/CD Updated!`**
 
 ---
@@ -268,13 +268,13 @@ git push origin main
 | # | Screenshot Item | URL / Command | What It Verifies |
 |---|---|---|---|
 | **1** | **GitHub Repository Structure** | `https://github.com/Eclipse1911/cca2-cicd-project` | Organized files, Dockerfile, Jenkinsfile, k8s manifests |
-| **2** | **AWS EC2 Running Instance** | AWS Management Console $\rightarrow$ EC2 | Public IP `15.207.98.121`, Security group ports `22`, `8080`, `30080` |
-| **3** | **Jenkins Pipeline Stage View** | `http://15.207.98.121:8080/job/cca2-cicd-job/` | All 6 stages completed in green |
-| **4** | **Jenkins Console Output** | `http://15.207.98.121:8080/job/cca2-cicd-job/lastBuild/console` | Unit tests passed (`npm test`), Docker image tagged |
+| **2** | **AWS EC2 Running Instance** | AWS Management Console $\rightarrow$ EC2 | Public IP `13.235.86.28`, Security group ports `22`, `8080`, `30080` |
+| **3** | **Jenkins Pipeline Stage View** | `http://13.235.86.28:8080/job/cca2-cicd-job/` | All 6 stages completed in green |
+| **4** | **Jenkins Console Output** | `http://13.235.86.28:8080/job/cca2-cicd-job/lastBuild/console` | Unit tests passed (`npm test`), Docker image tagged |
 | **5** | **Docker Hub Repository Tags** | `https://hub.docker.com/repository/docker/eclipse1911/cca2-app/tags` | Image tags (`latest`, build numbers) pushed |
 | **6** | **Minikube Pods & Service** | `kubectl get pods -l app=cca2-app -o wide` | 2 Running Pods & NodePort 30080 |
-| **7A** | **Live App - Version 1.0** | `http://15.207.98.121:30080` | Initial baseline: `Version 1.0 - Hello World` |
-| **7B** | **Live App - Version 2.0** | `http://15.207.98.121:30080` | Code change rollout: `Version 2.0 - CI/CD Updated!` |
+| **7A** | **Live App - Version 1.0** | `http://13.235.86.28:30080` | Initial baseline: `Version 1.0 - Hello World` |
+| **7B** | **Live App - Version 2.0** | `http://13.235.86.28:30080` | Code change rollout: `Version 2.0 - CI/CD Updated!` |
 
 ---
 
